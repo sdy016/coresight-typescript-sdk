@@ -1,2 +1,2 @@
-# coresight-typescript-sdk
-javascript(typescript) sdk for coresight analysis integration
+# coresight-ts-sdk
+javascript sdk for coresight analysis integration
