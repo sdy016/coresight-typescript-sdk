@@ -1,6 +1,6 @@
 {
-  "name": "coresight-typescript-sdk",
-  "version": "1.0.1",
+  "name": "coresight-gamereport-ts-sdk",
+  "version": "1.0.2",
   "description": "javascript sdk for coresight analysis integration",
   "author": {
     "name": "coresight",
@@ -19,7 +19,7 @@
   "keywords": [
     "coresight"
   ],
-  "main": "lib/index.ts",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
