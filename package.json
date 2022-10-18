@@ -1,6 +1,6 @@
 {
   "name": "coresight-gamereport-ts-sdk",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "javascript sdk for coresight analysis integration",
   "author": {
     "name": "coresight",
@@ -43,6 +43,6 @@
   },
   "type": "module",
   "dependencies": {
-    "node-fetch": "^3.2.10"
+    "node-fetch": "^2.6.7"
   }
 }
