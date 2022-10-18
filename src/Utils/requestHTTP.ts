@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 export function RequestHTTP(authkey: string, url_prex: string, url: string, data: string, retry_count: number = 0) {
   const requestUriString = `${url_prex}${url}`;
 
