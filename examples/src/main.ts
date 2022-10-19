@@ -1,25 +1,24 @@
-import "./style.css";
-import StorageCoreApi from "coresight-gamereport-ts-sdk/lib";
-import * as model from "coresight-gamereport-ts-sdk/lib/Models/models";
-import * as sample from "./sample.data";
+import './style.css';
+import StorageCoreApi from 'coresight-gamereport-ts-sdk/lib';
+import * as model from 'coresight-gamereport-ts-sdk/lib/Models/models';
+import * as sample from './sample.data';
 
 const constructorParams: model.ConstructorModel = {
-  Url: "http://dev-rest.gr.ncp.navercorp.com:8080/",
-  AuthKey: "ec079766e34946dea73cd8b1ae4febef",
-  TargetVer: "9.9.9",
-  ChannelCode: "testChannelCode",
-  ChannelID: "testChannelId",
-  MemberID: "testMemberId",
-  CharID: "testCharId",
-  NickName: "testNickname",
-  ContryCode: "kor",
-  OSType: "testOs",
-  OSVersion: "8.8.8",
-  DeviceKey: "testMemberId",
-  DeviceModel: "iphone",
-  IPAddress: "0.0.0.0",
+  Url: 'API-URL',
+  AuthKey: 'AUTH KEY',
+  TargetVer: 'APP VERSION',
+  ChannelCode: 'CHANNEL CODE',
+  ChannelID: 'CHANNEL ID',
+  MemberID: 'MEMBER ID',
+  CharID: 'MEMBER CHARACTER ID',
+  NickName: 'MEMBER NICKNAME',
+  ContryCode: 'KOR',
+  OSType: 'ANDROID OR IOS',
+  OSVersion: 'OS VERSION',
+  DeviceKey: 'DEVICE-KEY',
+  DeviceModel: 'IPHONE 14',
+  IPAddress: '0.0.0.0',
 };
-
 //Create SDK instance
 const storageCoreApi = new StorageCoreApi(constructorParams);
 
@@ -28,23 +27,23 @@ storageCoreApi.SetAccountLevel(50);
 
 //Set character ID - Used when there is a change after the initial object creation
 //Set your character ID to "7777777"
-storageCoreApi.SetCharacterID("77777777");
+storageCoreApi.SetCharacterID('77777777');
 
 //Account ID Settings - Used when there is a change after the initial object creation
 //Set memberId to "MID0000007"
-storageCoreApi.SetMemberID("MID0000007");
+storageCoreApi.SetMemberID('MID0000007');
 
 //Set Account Nickname - Used when there is a change after the initial object creation
 //Set your account nickname to "IronMan"
-storageCoreApi.SetNickName("IronMan");
+storageCoreApi.SetNickName('IronMan');
 
 //Set Channel Id (ID issued by SNS authentication or self-certification)
 //Set channel ID to "0000001234567"
-storageCoreApi.SetChannelID("0000001234567");
+storageCoreApi.SetChannelID('0000001234567');
 
 //Set Channel Code (Platform codes such as Google, Apple, etc.)
 //Set the channel code to "GOOGLE".
-storageCoreApi.SetChannelCode("MarketPlace");
+storageCoreApi.SetChannelCode('MarketPlace');
 
 /****************************************************************************************
  * ****************************************************************************************
@@ -101,7 +100,7 @@ storageCoreApi.ResourceChangeInfos(sample.requestResourceChangeInfo);
 //Send purchase log through card, cash, gift card, etc.
 storageCoreApi.BuyInfos(sample.requestBuyInfo);
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
     SDK
   </div>
