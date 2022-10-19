@@ -1,18 +1,4 @@
-import {
-  BaseInfo,
-  IStorageCoreApi,
-  ConnectType,
-  FlowType,
-  ItemChangeInfo,
-  VMoneyChangeInfo,
-  AdPerformInfosRequest,
-  BuyInfosRequest,
-  ConnectInfosRequest,
-  ContentActInfosRequest,
-  InstallInfosRequest,
-  ResourceChangeInfosRequest,
-  ConstructorModel,
-} from './Models/models';
+import * as model from './Models/models';
 import { guid } from './Utils/uuid';
 import { RequestHTTP, getAuthKey } from './Utils/requestHTTP';
 import {
@@ -28,19 +14,19 @@ import {
 import { getRequestData, getRequestDataByAddParam } from './Utils/getRequestData';
 import { getDeviceName } from './Utils/getDeviceName';
 
-class StorageCoreApi implements IStorageCoreApi {
+class StorageCoreApi implements model.IStorageCoreApi {
   urlPrefix: string = '';
   connectKey: string = '';
   authSeq: string = '';
   isDebug: boolean = false;
-  baseInfo: BaseInfo;
+  baseInfo: model.BaseInfo;
   DeviceModel: string = '';
 
   /**
    *
    * @param constructorModel
    */
-  constructor(constructorModel: ConstructorModel) {
+  constructor(constructorModel: model.ConstructorModel) {
     const {
       Url,
       AuthKey,
@@ -59,7 +45,7 @@ class StorageCoreApi implements IStorageCoreApi {
     } = constructorModel;
 
     this.urlPrefix = Url;
-    this.baseInfo = new BaseInfo(
+    this.baseInfo = new model.BaseInfo(
       '1.0.14',
       '1.0.1',
       TargetVer,
@@ -80,12 +66,6 @@ class StorageCoreApi implements IStorageCoreApi {
     );
     this.DeviceModel = DeviceModel;
   }
-  // ItemChangeInfosList(itemChangeInfosListRequest: ItemChangeInfosListRequest[]): void {
-  //   throw new Error('Method not implemented.');
-  // }
-  // VMoneyChangeInfosList(vMoneyChangeInfosListRequest: VMoneyChangeInfosListRequest[]): void {
-  //   throw new Error('Method not implemented.');
-  // }
 
   public SetDebug(debug: boolean): void {
     this.isDebug = debug;
@@ -119,12 +99,12 @@ class StorageCoreApi implements IStorageCoreApi {
     this.baseInfo.ChannelCode = ChannelCode;
   }
 
-  ConnectInfos(connectInfosRequest: Array<ConnectInfosRequest>): void {
+  ConnectInfos(connectInfosRequest: Array<model.ConnectInfosRequest>): void {
     try {
       if (connectInfosRequest.length > 0) {
         const { entryType, connectType } = connectInfosRequest[0];
         const uuid = guid();
-        if (entryType == FlowType.IN && connectType == ConnectType.APP) {
+        if (entryType == model.FlowType.IN && connectType == model.ConnectType.APP) {
           this.connectKey = uuid;
           this.authSeq = uuid;
           this.baseInfo.AuthSEQ = this.authSeq;
@@ -144,7 +124,7 @@ class StorageCoreApi implements IStorageCoreApi {
       console.error(error);
     }
   }
-  ContentActInfos(contentActInfosRequest: Array<ContentActInfosRequest>): void {
+  ContentActInfos(contentActInfosRequest: Array<model.ContentActInfosRequest>): void {
     try {
       const requestData: string = getRequestData(this.baseInfo, contentActInfosRequest);
       RequestHTTP(this.baseInfo.AuthKey, this.urlPrefix, ContentActInfos_URL, requestData);
@@ -152,7 +132,7 @@ class StorageCoreApi implements IStorageCoreApi {
       console.error(error);
     }
   }
-  AdPerformInfos(adPerformInfosRequest: Array<AdPerformInfosRequest>): void {
+  AdPerformInfos(adPerformInfosRequest: Array<model.AdPerformInfosRequest>): void {
     try {
       const requestData: string = getRequestData(this.baseInfo, adPerformInfosRequest);
       RequestHTTP(this.baseInfo.AuthKey, this.urlPrefix, AdPerformInfos_URL, requestData);
@@ -160,7 +140,7 @@ class StorageCoreApi implements IStorageCoreApi {
       console.error(error);
     }
   }
-  InstallInfos(installInfosRequest: Array<InstallInfosRequest>): void {
+  InstallInfos(installInfosRequest: Array<model.InstallInfosRequest>): void {
     try {
       const requestData: string = getRequestDataByAddParam(
         this.baseInfo,
@@ -173,7 +153,7 @@ class StorageCoreApi implements IStorageCoreApi {
       console.error(error);
     }
   }
-  ItemChangeInfos(itemChangeInfosRequest: Array<ItemChangeInfo>): void {
+  ItemChangeInfos(itemChangeInfosRequest: Array<model.ItemChangeInfoRequest>): void {
     try {
       const requestData: string = getRequestData(this.baseInfo, itemChangeInfosRequest);
       RequestHTTP(this.baseInfo.AuthKey, this.urlPrefix, ItemChangeInfos_URL, requestData);
@@ -182,7 +162,7 @@ class StorageCoreApi implements IStorageCoreApi {
     }
   }
 
-  VMoneyChangeInfos(vMoneyChangeInfosRequest: Array<VMoneyChangeInfo>): void {
+  VMoneyChangeInfos(vMoneyChangeInfosRequest: Array<model.VMoneyChangeInfosRequest>): void {
     try {
       const requestData: string = getRequestData(this.baseInfo, vMoneyChangeInfosRequest);
 
@@ -192,7 +172,7 @@ class StorageCoreApi implements IStorageCoreApi {
     }
   }
 
-  ResourceChangeInfos(resourceChangeInfosRequest: Array<ResourceChangeInfosRequest>): void {
+  ResourceChangeInfos(resourceChangeInfosRequest: Array<model.ResourceChangeInfosRequest>): void {
     try {
       const requestData: string = getRequestData(this.baseInfo, resourceChangeInfosRequest);
       RequestHTTP(this.baseInfo.AuthKey, this.urlPrefix, ResourceChangeInfos_URL, requestData);
@@ -201,7 +181,7 @@ class StorageCoreApi implements IStorageCoreApi {
     }
   }
 
-  BuyInfos(buyInfosRequest: Array<BuyInfosRequest>): void {
+  BuyInfos(buyInfosRequest: Array<model.BuyInfosRequest>): void {
     try {
       const requestData: string = getRequestData(this.baseInfo, buyInfosRequest);
       RequestHTTP(this.baseInfo.AuthKey, this.urlPrefix, BuyInfos_URL, requestData);

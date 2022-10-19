@@ -1,7 +1,16 @@
-import fetch from 'node-fetch';
+//import axios from 'axios';
 
 export function RequestHTTP(authkey: string, url_prex: string, url: string, data: string, retry_count: number = 0) {
   const requestUriString = `${url_prex}${url}`;
+
+  // axios.post(requestUriString, data, {
+  //   headers: {
+  //     'Access-Control-Allow-Origin': '*',
+  //     'Content-Type': 'application/json',
+  //     'token': authkey,
+  //     'charset': 'UTF-8',
+  //   },
+  // });
 
   fetch(requestUriString, {
     method: 'POST', // 또는 'PUT'

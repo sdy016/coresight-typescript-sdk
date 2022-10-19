@@ -589,14 +589,14 @@ export interface ContentActInfo {
   EnemyKillInfo: Array<EnemyInfo>;
 }
 
-export interface ItemChangeInfo {
+export interface ItemChangeInfoRequest {
   ItemFlowType: FlowType;
   ItemChangeType: ChangeType;
-  ChangeDetail: string;
-  ContentName: string;
-  ContentCode: string;
-  ItemsInfo: Array<ItemsInfo>;
-  ChangeName: string;
+  ChangeDetail: string | null;
+  ContentName: string | null;
+  ContentCode: string | null;
+  ItemsInfo: Array<ItemsInfo> | null;
+  ChangeName: string | null;
 }
 
 export interface BuyInfo {
@@ -730,26 +730,13 @@ export interface ResourceChangeInfo {
   MoneyAmount: number;
 }
 
-export interface VMoneyChangeInfo {
-  MoneyFlowType: FlowType;
-  MoneyName: string;
-  MoneyChangeType: MoneyChangeType;
-  MoneyChangeDetail: string;
-  ContentName: string;
-  ContentCode: string;
-  MoneyType: MoneyType;
-  Amount: number;
-  HoldAmount: number;
-  MoneyChangeName: string;
-}
-
 export interface ConnectInfosRequest {
   connectType: ConnectType;
   contentName: string | null;
   entryType: FlowType;
 }
 export interface ContentActInfosRequest {
-  ContentActStageType: StageType;
+  StageType: StageType;
   StageName: string | null;
   IsAuto: AutoType;
   StageGrade: string | null;
@@ -785,18 +772,9 @@ export interface InstallInfosRequest {
   PushToken: string | null;
 }
 
-export interface ItemChangeInfosRequest {
-  ItemFlowType: FlowType;
-  ItemChangeType: ChangeType;
-  ChangeDetail: string | null;
-  ContentName: string | null;
-  ContentCode: string | null;
-  ItemsInfo: Array<ItemsInfo> | null;
-  ChangeName: string | null;
-}
-export interface ItemChangeInfosListRequest {
-  ItemChangeInfos: Array<ItemChangeInfo> | null;
-}
+/**
+ * VMoneyChangeInfos Parameter
+ */
 export interface VMoneyChangeInfosRequest {
   MoneyFlowType: FlowType;
   MoneyName: string | null;
@@ -808,9 +786,6 @@ export interface VMoneyChangeInfosRequest {
   Amount: number;
   HoldAmount: number;
   MoneyChangeName: string | null;
-}
-export interface VMoneyChangeInfosListRequest {
-  VMoneyChangeInfos: Array<VMoneyChangeInfo> | null;
 }
 export interface ResourceChangeInfosRequest {
   ChangeObjectType: ObjectType;
@@ -853,8 +828,8 @@ export interface IStorageCoreApi {
   ContentActInfos(contentActInfosRequest: Array<ContentActInfosRequest>): void;
   AdPerformInfos(adPerformInfosRequest: Array<AdPerformInfosRequest>): void;
   InstallInfos(installInfosRequest: Array<InstallInfosRequest>): void;
-  ItemChangeInfos(itemChangeInfosRequest: Array<ItemChangeInfo>): void;
-  VMoneyChangeInfos(vMoneyChangeInfosRequest: Array<VMoneyChangeInfo>): void;
+  ItemChangeInfos(itemChangeInfosRequest: Array<ItemChangeInfoRequest>): void;
+  VMoneyChangeInfos(vMoneyChangeInfosRequest: Array<VMoneyChangeInfosRequest>): void;
   ResourceChangeInfos(ResourceChangeInfosRequest: Array<ResourceChangeInfosRequest>): void;
   BuyInfos(buyInfosRequest: Array<BuyInfosRequest>): void;
 }

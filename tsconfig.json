@@ -15,17 +15,30 @@
 //     "inlineSourceMap": true /* 분리된 파일을 가지고 있는 대신, 단일 파일을 소스 맵과 가지고 있을 지 여부 */
 //   }
 // }
+// {
+//   "compilerOptions": {
+//     "module": "commonjs",
+//     "strict": true,
+//     "target": "ES2020",
+//     "declaration": true,
+//     "esModuleInterop": true,
+//     "outDir": "./lib",
+
+//     "noImplicitAny": true,
+//     "allowJs": true,
+//     "moduleResolution": "node",
+//     "allowSyntheticDefaultImports": true,
+//   }
 
 {
   "compilerOptions": {
-    "outDir": "./lib",
-    "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
-    "allowJs": true,
-    "declaration": true,
-    "moduleResolution": "node",
+    "module": "commonjs",
     "strict": true,
-    "allowSyntheticDefaultImports": true
-  }
+    "target": "ES2020",
+    "declaration": true,
+    "esModuleInterop": true,
+    "outDir": "./lib"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["examples/*"]
 }
